@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date()
+
+      window.Tawk_API.visitor = {
+        name: 'Test name',
+        email: 'email@email.com',
+        place: 'redZone',
+      };
+	  
+	  (function () {
+        var s1 = document.createElement('script'),
+          s0 = document.getElementsByTagName('script')[0]
+        s1.async = true
+        s1.src = 'https://embed.tawk.to/6290bff2b0d10b6f3e745713/1g42mrk3d'
+        s1.charset = 'UTF-8'
+        s1.setAttribute('crossorigin', '*')
+
+        s0.parentNode.insertBefore(s1, s0)
+      })()
+
+      console.log(window.Tawk_API)
+      window.Tawk_API.onLoad = function () {
+        console.log('started')
+        window.Tawk_API.setAttributes(
+          {
+            name: 'Name',
+            email: 'email@email.com',
+            hash: 'hash value',
+            place: 'redZone',
+          },
+          function (error) {
+            console.log('responce')
+            if (error) console.log('err' + error)
+            else console.log('works twak')
+          },
+        )
+      }
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script src="https://threejs.org/build/three.js"></script>
+    <script>
+      const scene = new THREE.Scene()
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000,
+      )
+
+      const renderer = new THREE.WebGLRenderer()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      document.body.appendChild(renderer.domElement)
+
+      const geometry = new THREE.BoxGeometry()
+      const material = new THREE.MeshBasicMaterial({ color: 0xffff00 })
+      const cube = new THREE.Mesh(geometry, material)
+      scene.add(cube)
+
+      camera.position.z = 3
+
+      function animate() {
+        requestAnimationFrame(animate)
+
+        cube.rotation.x += 0.01
+        cube.rotation.y += 0.01
+
+        renderer.render(scene, camera)
+      }
+
+      animate()
+    </script>
+  </body>
+</html>
